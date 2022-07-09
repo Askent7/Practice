@@ -1,0 +1,28 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+
+  <main class="px-3">
+    <h1>Вы попали на главную страницу с анкетами!</h1>
+    <p class="lead">Если вы обычный пользователь, то вы можете заполнить анкету на сайте.</p>
+    <p class="lead">Если вы обладаете правами Администратора, то вам доступно создание, редактировани и просмотр анкет :)</p>
+
+    <p class="lead" th:if="${bool}">Ваши права - ADMIN</p>
+    <p class="lead" th:unless="${bool}">Ваши права - USER</p>
+  </main>
+
+</div>
+</body>
+</html>
