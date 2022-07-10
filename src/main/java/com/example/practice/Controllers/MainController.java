@@ -4,6 +4,7 @@ import com.example.practice.Models.Role;
 import com.example.practice.Models.Useru;
 import com.example.practice.Repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -25,18 +26,27 @@ public class MainController {
 
     @GetMapping("/")
     public String home( Model model,
-                        @AuthenticationPrincipal User uservsv) {
+                        @AuthenticationPrincipal User user_cur2) {
+
         model.addAttribute("title", "Главная страница");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(auth.getPrincipal() != "anonymousUser"){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(1);
+        System.out.println(user.getUsername());
         Useru user_cur = userRepos.findByUsername(user.getUsername());
         Boolean bool = false;
         Set<Role>  role = user_cur.getRoles();
         if(role.iterator().next() == ADMIN){
             bool = true;
         }
-        model.addAttribute("bool", bool);
 
+        model.addAttribute("bool", bool);
         return "home";
+        }
+        else{
+            return"redirect:/login";
+        }
     }
     @GetMapping("/home")
     public String home_2( Model model,

@@ -116,9 +116,11 @@ public class QuestionController {
         if(check != null){
             for(int i = 0; i < check.length; i++)
             {
-
+                Answer answer = answerRepos.findByIda(check[i]);
                 Statistics statistics = new Statistics(useru.getIdu(), check[i], question_cur.getIdq(), id);
                 statisticsRepos.save(statistics);
+                answer.getStatistics().add(statistics);
+                answerRepos.save(answer);
             }
 
         }else{

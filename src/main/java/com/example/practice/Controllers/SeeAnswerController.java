@@ -4,6 +4,7 @@ import com.example.practice.Models.*;
 import com.example.practice.Repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -82,6 +83,7 @@ public class SeeAnswerController {
             Anket anket = new Anket();
 
             anket.setNamequestionnaire(anketList.get(anket_number).getNamequestionnaire());
+            anket.setId(anket_number);
 
             List<Question> questions= new ArrayList<>();
 
@@ -105,6 +107,7 @@ public class SeeAnswerController {
 
             anket.setQuestion(questions);
             anketList_cur.add(anket);
+
         }
 
         model.addAttribute("anket", anketList_cur);
@@ -117,6 +120,8 @@ public class SeeAnswerController {
             bool = true;
         }
         model.addAttribute("bool", bool);
+
+        model.addAttribute("user", user_cur.getUsername());
         return "see-all-answer";
     }
 

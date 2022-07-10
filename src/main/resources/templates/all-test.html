@@ -10,11 +10,11 @@
 
 
 <div class="container mt-5">
-  <h1>Все тесты</h1>
+  <h1>Все анкеты</h1>
   <div th:each="el_anket: ${ankets}" class="alert alert-info mt-2">
     <h3 th:text="${el_anket.namequestionnaire}"/>
     <p th:text="${el_anket.author}"/>
-    <a th:href="'/all-test/'+${el_anket.id} + '/question/1'" class="btn btn-warning">Пройти тест</a>
+    <a th:href="'/all-test/'+${el_anket.id} + '/question/1'" class="btn btn-warning">Пройти анкету</a>
   </div>
 </div>
 

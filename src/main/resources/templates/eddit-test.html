@@ -14,7 +14,7 @@
     <div th:each="el_anket: ${ankets}" class="alert alert-info mt-2">
         <h3 th:text="${el_anket.namequestionnaire}"/>
         <p th:text="${el_anket.author}"/>
-        <a th:href="'/eddittest/'+${el_anket.id}" class="btn btn-warning">Редактировать тест</a>
+        <a th:href="'/eddittest/'+${el_anket.id}" class="btn btn-warning">Редактировать анкету</a>
     </div>
 </div>
 
