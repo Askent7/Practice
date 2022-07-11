@@ -86,7 +86,6 @@ public class AddTestController {
             flag = true;
         model.addAttribute("flag",flag);
 
-
         return "add-question";
     }
 
@@ -155,7 +154,6 @@ public class AddTestController {
                                 @PathVariable(value = "number") Integer number,
                                 @RequestParam String answer,
                                 Model model ){
-
 
         questionRepos.deleteById(idq);
         return "redirect:/all-test/";

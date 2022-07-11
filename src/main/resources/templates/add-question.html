@@ -14,7 +14,6 @@
     <h1>Добавление вопроса</h1>
     <form  method="post">
 
-
         <input type="text" name="name_q" th:value="${text_q}" placeholder="Введите название вопроса" class="form-control"><br>
         <input type="text" name="answer" placeholder="Введите ответ" class="form-control"><br>
 
@@ -27,10 +26,9 @@
         <div th:if="${flag}" class="mb-3">Ответов должно быть больше двух</div>
             <button class="btn btn-warning" type="submit" name="next">Следующий вопрос</button>
             <button class="btn btn-warning" type="submit" name="add">Добавить ответ</button>
-            <button class="btn btn-warning" type="submit" name="end">Завершить создание теста</button>
+            <button class="btn btn-warning" type="submit" name="end">Завершить создание анкеты</button>
     </form>
 </div>
-
 
 </body>
 </html>
